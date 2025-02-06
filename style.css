@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+}
+
+body {
+  background-color: #8b7777;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+}
+.new-box {
+  background: pink;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  padding: 20px;
+}
+.page {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 12px;
+  height: 600px;
+  padding: 20px;
+}
+.right-block{
+    background: yellow;
+    width: 300px;
+    height: 600px;
+    border-radius: 12px;
+    padding: 20px;
+}
+.info{
+    background: green;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    padding: 20px; 
+}
+.block-list{
+  list-style-type: none;
+}
