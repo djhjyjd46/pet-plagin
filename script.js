@@ -7,7 +7,6 @@ const arrDate = [...dataPostEl].map(item => item.textContent).slice(0, 5)
 
 console.log(arrDate);
 
-
 render()
 function render() {
     const dataUlEl = document.createElement('ul');
