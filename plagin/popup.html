@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VK Plugin</title>
-</head>
-<body>
-    <button id="toggleButton">Показать / Скрыть</button>
-    <script src="popup.js"></script>
-</body>
+  </head>
+  <body>
+    <style>
+
+      .btn {
+        padding: 8px 12px;
+        background-color: rgb(66, 63, 255);
+        color: #dadada;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: rgb(3, 3, 168);
+      }
+      .container {
+        display: flex;
+        height: 30px;
+        width: 100px;
+        justify-content: center;
+        align-items: center;
+      }
+     
+    </style>
+    <div class="container">
+      <button class="btn" id="toggleButton">Обновить</button>
+      <script src="popup.js"></script>
+    </div>
+  </body>
 </html>
