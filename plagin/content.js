@@ -15,6 +15,7 @@
             }
         }
     });
+    
 
     // Запуск наблюдателя за изменениями в DOM
     urlObserver.observe(document.body, {
