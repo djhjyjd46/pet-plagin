@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "My Vk plugin",
     "version": "1.0",
-    "description": "Добавляет и скрывает блок c датами 5 последних записей на странице ВК",
+    "description": "Добавляет блок c датами 5 последних записей на странице ВК",
     "permissions": ["scripting", "tabs"],
     "host_permissions": ["https://vk.com/*"],
     "background": {
