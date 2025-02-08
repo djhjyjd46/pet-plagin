@@ -46,12 +46,12 @@
             const dataPostEl = document.querySelectorAll('[data-testid="post_date_block_preview"]');
             const arrDate = [...dataPostEl].map((item) => item.textContent);
 
-            if (arrDate.length >= 5) {
+            if (arrDate.length > 4) {
                 const arrDateAbsolute = arrDate.map((item) => convertPostDate(item));
 
                 const objData = Object.fromEntries(arrDate.map((key, index) => [key, arrDateAbsolute[index]]));
                 const arrData = Object.entries(objData).map(([key, value]) => ({ key, value }));
-                renderBlock(arrData.slice(0,5));
+                renderBlock(arrData.slice(0, 5));
             }
 
         });
@@ -127,12 +127,12 @@
     function renderBlock(data) {
         // conts groupPhone = querySelector('')
 
-        const backDate= Date.now()-1000*60*60*24*30*6; // 6 месяцев назад
-      
+        const backDate = Date.now() - 1000 * 60 * 60 * 24 * 30 * 6; // 6 месяцев назад
+
         const sectionBlock = document.querySelector("#narrow_column");
         if (!sectionBlock) return;
 
-        const existingBlock = document.querySelector(".group_friends");
+        const existingBlock = document.querySelector(".new_block");
         if (existingBlock) return; // Чтобы не добавлять дубликаты
 
         const labelHead = document.createElement("div");
@@ -145,21 +145,35 @@
 
         sectionBlock.prepend(newBlock);
         newDiv.prepend(labelHead);
-        labelHead.classList.add("group_friends_text");
         labelHead.textContent = "Лидогенерация";
+        labelHead.style.cssText = `
+            font-style: normal;
+            font-style: normal;
+            font-weight: 500;
+            -webkit-font-smoothing: subpixel-antialiased;
+            -moz-osx-font-smoothing: auto;
+            font-size: 15px;
+            line-height: 20px;
+            letter-spacing: -.007em;`
 
         data.forEach((item) => {
             const dataLiEl = document.createElement("li");
-            if(item.value<backDate){
-                 dataLiEl.style.color = "red";
-                }
-            dataLiEl.textContent = item.key; 
+            if (item.value < backDate) {
+                dataLiEl.style.color = "red";
+            }
+            dataLiEl.textContent = item.key;
             dataUlEl.append(dataLiEl);
         });
-        
-        newBlock.classList.add("page_block", "group_friends");
+
+        newBlock.classList.add("page_block", "new_block");
+        newBlock.style.cssText = `
+            display: block;
+            padding: 19px 20px 20px;
+        `;
+
         newBlock.append(newDiv);
 
         console.log(data);
-   }
+
+    }
 })();
