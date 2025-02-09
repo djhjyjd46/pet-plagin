@@ -9,8 +9,8 @@
   cursor: pointer;
   background: rgb(32, 179, 51);
 }
-body{
-  margin: 2px;  
+body {
+  margin: 2px;
 }
 .button:hover {
   background: rgb(18, 133, 47);
@@ -28,7 +28,7 @@ body{
   cursor: pointer;
 }
 
-.conteiner {
+.container {
   position: relative;
   display: flex;
   justify-content: center;
@@ -45,7 +45,7 @@ body{
 }
 
 .num {
-    padding-left: 5px;
+  padding-left: 5px;
   width: 50px;
   height: 45px;
   font-size: 20px;
@@ -70,12 +70,12 @@ body{
   height: 40px;
 }
 .head-label {
-    font-style: normal;
-    font-style: normal;
-    font-weight: 500;
-    -webkit-font-smoothing: subpixel-antialiased;
-    -moz-osx-font-smoothing: auto;
-    font-size: 15px;
-    line-height: 20px;
-    letter-spacing: -.007em;
+  font-style: normal;
+  font-style: normal;
+  font-weight: 500;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.007em;
 }

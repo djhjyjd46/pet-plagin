@@ -3,7 +3,7 @@
     "name": "My Vk plugin",
     "version": "1.0",
     "description": "Добавляет блок c датами 5 последних записей на странице ВК",
-    "permissions": ["scripting", "tabs"],
+    "permissions": ["scripting", "tabs", "storage"],
     "host_permissions": ["https://vk.com/*"],
     "background": {
         "service_worker": "background.js"
