@@ -1,36 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VK Plugin</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
-    <style>
-
-      .btn {
-        padding: 8px 12px;
-        background-color: rgb(66, 63, 255);
-        color: #dadada;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      .btn:hover {
-        background-color: rgb(3, 3, 168);
-      }
-      .container {
-        display: flex;
-        height: 30px;
-        width: 100px;
-        justify-content: center;
-        align-items: center;
-      }
-     
-    </style>
-    <div class="container">
-      <button class="btn" id="toggleButton">Обновить</button>
-      <script src="popup.js"></script>
+ <body>
+    <div class="conteiner">
+      <div class="box">
+        <span class="text">ШРИФТ</span>
+        <input class="num" type="number" value="10" min="7" />
+        <input class="color" type="color" name="" id="" />
+        <button class="button">Применить</button>
+      </div>
+      <button class="button button--reset" id="toggleButton">Обновить</button>
     </div>
+    <script src="popup.js"></script>
   </body>
 </html>

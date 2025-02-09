@@ -47,7 +47,7 @@
             const dataPostEl = document.querySelectorAll('[data-testid="post_date_block_preview"]');
             const arrDate = [...dataPostEl].map((item) => item.textContent);
 
-            if (arrDate.length > 4) {
+            if (arrDate.length > 5) {
                 const arrDateAbsolute = arrDate.map((item) => convertPostDate(item));
 
                 const objData = Object.fromEntries(arrDate.map((key, index) => [key, arrDateAbsolute[index]]));
