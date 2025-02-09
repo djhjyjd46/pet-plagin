@@ -28,7 +28,7 @@ body{
   cursor: pointer;
 }
 
-.conteiner {
+.container {
   position: relative;
   display: flex;
   justify-content: center;

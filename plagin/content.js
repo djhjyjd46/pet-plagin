@@ -15,7 +15,6 @@
             }
         }
     });
-    
 
     // Запуск наблюдателя за изменениями в DOM
     urlObserver.observe(document.body, {
@@ -26,10 +25,37 @@
     // Первичная инициализация
     init();
 
+    // Функция применения стилей
+    function applySavedStyles() {
+        chrome.storage.sync.get('styles', (data) => {
+            if (data.styles) {
+                const elements = document.querySelectorAll('[data-testid="post_date_block_preview"]');
+                elements.forEach(element => {
+                    element.style.color = data.styles.color;
+                    element.style.fontSize = data.styles.fontSize;
+                });
+            }
+        });
+    }
+
+    // Применяем стили при загрузке скрипта
+    applySavedStyles();
+
     // Обработчик сообщений от popup
-    chrome.runtime.onMessage.addListener((message) => {
-        if (message.action === "toggleRender") {
-            toggleRender();
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        switch (message.action) {
+            case "toggleRender":
+                toggleRender();
+                break;
+            case "updateStyles":
+                const elements = document.querySelectorAll('[data-testid="post_date_block_preview"]');
+                elements.forEach(element => {
+                    element.style.color = message.styles.color;
+                    element.style.fontSize = message.styles.fontSize;
+                });
+                // Сохраняем стили в chrome.storage
+                chrome.storage.sync.set({ styles: message.styles });
+                break;
         }
     });
 
@@ -55,6 +81,8 @@
                 renderBlock(arrData.slice(0, 5));
             }
 
+            // Применяем сохраненные стили к новым элементам
+            applySavedStyles();
         });
 
         observer.observe(document.body, { childList: true, subtree: true });
@@ -124,10 +152,7 @@
         // Если не найдено совпадение, возвращаем null
         return null;
     }
-
     function renderBlock(data) {
-        // conts groupPhone = querySelector('')
-
         const backDate = Date.now() - 1000 * 60 * 60 * 24 * 30 * 6; // 6 месяцев назад
 
         const sectionBlock = document.querySelector("#narrow_column");
@@ -149,13 +174,12 @@
         labelHead.textContent = "Лидогенерация";
         labelHead.style.cssText = `
             font-style: normal;
-            font-style: normal;
             font-weight: 500;
             -webkit-font-smoothing: subpixel-antialiased;
             -moz-osx-font-smoothing: auto;
             font-size: 15px;
             line-height: 20px;
-            letter-spacing: -.007em;`
+            letter-spacing: -.007em;`;
 
         data.forEach((item) => {
             const dataLiEl = document.createElement("li");
@@ -174,7 +198,10 @@
 
         newBlock.append(newDiv);
 
-        console.log(data);
+        console.log("скрипт отработал");
 
+        // Применяем стили с задержкой
+        setTimeout(applySavedStyles, 0);
     }
+
 })();
