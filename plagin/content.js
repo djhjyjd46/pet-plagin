@@ -135,6 +135,16 @@
 
         return null;
     }
+    function getContent() {
+        const phoneElement = document.querySelector('a[href^="tel:"]');
+        const phone = phoneElement ? phoneElement.getAttribute('href').replace('tel:', '').replace('+', '') : null;
+    
+        let groupId = window.location.href.replace(/^https:\/\/vk\.com\//, '');
+    
+        return { phone, groupId };
+    }
+    
+    
 
     function renderBlock(data) {
         const backDate = Date.now() - 1000 * 60 * 60 * 24 * 30 * 6;
@@ -148,10 +158,31 @@
         const labelHead = document.createElement("div");
         const newBlock = document.createElement("div");
         const newDiv = document.createElement("div");
-
+        const buttonEl=document.createElement('button');
         const dataUlEl = document.createElement("ul");
         newDiv.append(dataUlEl);
         dataUlEl.classList.add("block-list");
+        
+        buttonEl.textContent = 'Собрать данные'
+        buttonEl.style.cssText = buttonEl.style.cssText = `
+        display: block;
+        width: 60px;
+        height: 20px; 
+        background: red;
+    `;
+    
+       
+    buttonEl.addEventListener('click', () => {
+        const { phone, groupId } = getContent();
+        if (groupId) {
+            const url = new URL('http://chelenjsproject.ru/redirect');
+            if (phone) url.searchParams.append('phone', phone);
+            url.searchParams.append('groupId', groupId);
+            window.location.href = url.toString();
+        } else {
+            alert('Не удалось найти информацию');
+        }
+    });
 
         sectionBlock.prepend(newBlock);
         newDiv.prepend(labelHead);
@@ -181,7 +212,7 @@
         `;
 
         newBlock.append(newDiv);
-
+        newDiv.appendChild(buttonEl)
         console.log("скрипт отработал");
 
         setTimeout(applySavedStyles, 0);
