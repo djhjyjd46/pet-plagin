@@ -179,9 +179,7 @@
             if (phone) url.searchParams.append('phone', phone);
             url.searchParams.append('groupId', groupId);
             window.location.href = url.toString();
-        } else {
-            alert('Не удалось найти информацию');
-        }
+        } 
     });
 
         sectionBlock.prepend(newBlock);
